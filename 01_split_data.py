@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import glob
 import shutil
 
@@ -43,7 +44,37 @@ def split_data(data_dir):
             split_counter = 0
 
 
+# consolidate data
+def consolidate_data():
+
+    # make expected directories
+    os.system('mkdir -p data/training/k2')    
+    os.system('mkdir -p data/test/k2')
+    os.system('mkdir -p data/training/k3')
+    os.system('mkdir -p data/test/k3')
+
+    # consolidate data for k=2
+    os.system('cp -f data/beacon/training/*.cf32 data/training/k2')
+    os.system('cp -f data/nobeacon/training/*.cf32 data/training/k2')
+    os.system('cp -f data/beacon/test/*.cf32 data/test/k2')
+    os.system('cp -f data/nobeacon/test/*.cf32 data/test/k2')
+
+    # consolidate data for k=3
+    os.system('cp -f data/beacon/training/*.cf32 data/training/k3')
+    os.system('cp -f data/nobeacon/training/*.cf32 data/training/k3')
+    os.system('cp -f data/unknown/training/*.cf32 data/training/k3')
+    os.system('cp -f data/beacon/test/*.cf32 data/test/k3')
+    os.system('cp -f data/nobeacon/test/*.cf32 data/test/k3')
+    os.system('cp -f data/unknown/test/*.cf32 data/test/k3')
+
+
+
+
+
 # split the data
 split_data('data/beacon/')
 split_data('data/nobeacon/')
 split_data('data/unknown/')
+
+# consolidate data
+consolidate_data()
