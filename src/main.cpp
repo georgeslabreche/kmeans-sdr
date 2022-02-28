@@ -1,12 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <dirent.h>
-#include <cstring>
-#include <sys/stat.h>
 #include <stdint.h>
 
-//#include <dkm.hpp>
-//#include <dkm_utils.hpp>
+#include <dkm.hpp>
+#include <dkm_utils.hpp>
 
 
 #define BUFFER_SIZE 419000
